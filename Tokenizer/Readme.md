@@ -1,20 +1,31 @@
-Phase 1: Building a Custom Tokenizer from Scratch for LLMs
+# Phase 1: Building a Custom Tokenizer from Scratch for LLMs
 
-Overview
+---
 
-This module implements a basic tokenizer pipeline from scratch, a foundational component in building Large Language Models (LLMs). It converts raw text into numerical token IDs and reconstructs text back from those IDs. The implementation evolves from a simple tokenizer to a more robust version handling unknown tokens and special tokens.
+## 📌 Overview
 
-Technical Logic
-🔹 Text Preprocessing
-Uses regular expressions (re.split) to split text into tokens:
-(\W|_) → splits on non-alphanumeric characters and underscores
+This module implements a **basic tokenizer pipeline from scratch**, a foundational component in building Large Language Models (LLMs).  
 
-Removes empty/whitespace tokens:
+It converts raw text into **numerical token IDs** and reconstructs text back from those IDs. The implementation evolves from a simple tokenizer to a more robust version handling **unknown tokens** and **special tokens**.
 
+---
+
+## ⚙️ Technical Logic
+
+### 🔹 Text Preprocessing
+
+- Uses **regular expressions (`re.split`)** to split text into tokens:
+
+(\W|_)
+
+→ splits on non-alphanumeric characters and underscores  
+
+- Removes empty/whitespace tokens:
+```python
 [item.strip() for item in preprocessed if item.strip()]
 🔹 Vocabulary Creation
 
-Extracts unique tokens using:
+Extracts unique tokens:
 
 set(preprocessed)
 
@@ -28,7 +39,7 @@ vocab = {token: integer for integer, token in enumerate(all_words)}
 🔹 Tokenizer V1 (Basic)
 Encode:
 Splits text → maps tokens → IDs
-Assumes all tokens exist in vocab
+Assumes all tokens exist in vocabulary
 Decode:
 
 Converts IDs back to tokens:
@@ -37,12 +48,12 @@ Converts IDs back to tokens:
 
 ⚠️ Limitation:
 
-Fails if token is not in vocabulary
+Fails if a token is not present in the vocabulary
 🔹 Tokenizer V2 (Improved)
 Enhancements:
 Introduces special tokens:
-<|unk|> → unknown token
-<|endoftext|> → sequence separator
+<|unk|> → Unknown token
+<|endoftext|> → Sequence separator
 Encode Logic:
 
 Replaces unseen tokens:
@@ -56,3 +67,6 @@ Tokenization using regex
 Vocabulary mapping (token ↔ ID)
 Handling unknown tokens
 Special tokens for sequence boundaries
+
+---
+
