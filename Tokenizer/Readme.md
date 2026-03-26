@@ -23,7 +23,8 @@ It converts raw text into **numerical token IDs** and reconstructs text back fro
 - Removes empty/whitespace tokens:
 ```python
 [item.strip() for item in preprocessed if item.strip()]
-🔹 Vocabulary Creation
+
+Vocabulary Creation
 
 Extracts unique tokens:
 
@@ -36,6 +37,12 @@ sorted(set(preprocessed))
 Maps tokens to integers:
 
 vocab = {token: integer for integer, token in enumerate(all_words)}
+
+
+🔹 Vocabulary Creation
+Handling unknown tokens
+Special tokens for sequence boundaries
+
 🔹 Tokenizer V1 (Basic)
 Encode:
 Splits text → maps tokens → IDs
