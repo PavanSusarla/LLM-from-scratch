@@ -77,13 +77,51 @@ This module focuses on the fundamental step of any Large Language Model (LLM): c
 
 ---
 
-## 🔗 Next Steps
-- Build Byte Pair Encoding from scratch  
-- Convert tokens into embeddings  
-- Implement a simple language model (Bigram / Neural LM)  
-- Move towards transformer architecture  
 
----
 
-## 🧭 Position in LLM Journey
-This module represents the foundational stage of LLM development, where raw text is prepared for model ingestion. It sets the stage for embeddings, context understanding, and advanced architectures like transformers.
+# Data Sampling for Language Model Training
+
+## Overview
+This project focuses on preparing textual data for training a language model by converting raw text into tokenized sequences and structured input-target pairs. It demonstrates how to transform continuous text into meaningful training samples using sliding window techniques.
+
+## Technical Logic
+The workflow begins by loading raw text data and converting it into tokens using a tokenizer compatible with GPT-style models. These tokens are then segmented into fixed-length sequences using a sliding window approach.
+
+Each sequence is split into:
+- Input tokens (context)
+- Target tokens (next-token prediction)
+
+A custom dataset is built to store these input-target pairs, and a data loader is used to efficiently batch and feed them into a model during training.
+
+## Why This Matters
+Language models do not understand raw text directly—they learn patterns through token relationships. This step is critical because it defines how the model "sees" language, enabling it to learn context, sequence dependencies, and next-token prediction effectively.
+
+## How to Run
+- Prepare a raw text file as input data
+- Load the text into memory
+- Tokenize the text using a compatible tokenizer
+- Create dataset sequences using a fixed context length and stride
+- Initialize a data loader to generate batches
+- Iterate through batches to verify inputs and targets
+
+## Expected Outcomes
+- Tokenized representation of raw text
+- Structured input-target pairs for training
+- Efficient batching of sequences
+- Clear understanding of how context windows are formed
+
+## Key Takeaways
+- Tokenization is the foundation of language modeling
+- Context windows define how much information the model sees at once
+- Sliding windows help maximize data utilization
+- Input-target shifting enables next-token prediction learning
+- DataLoader improves training efficiency through batching
+
+## Next Steps
+- Build a simple neural language model using these batches
+- Implement embedding layers for token representation
+- Introduce attention mechanisms
+- Scale to transformer-based architectures
+
+## Position in LLM Journey
+This project sits at the early data preparation stage of LLM development, right after tokenization and before model architecture implementation. It bridges raw text processing and model training, forming a critical foundation for building GPT-like models.
