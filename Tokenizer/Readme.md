@@ -123,5 +123,45 @@ Language models do not understand raw text directly—they learn patterns throug
 - Introduce attention mechanisms
 - Scale to transformer-based architectures
 
+# Token Embeddings & Dataset Preparation for LLM Training
+
+## Overview
+This project focuses on transforming raw text into meaningful numerical representations using token embeddings and preparing structured datasets for training a language model. It demonstrates how text is tokenized, embedded, and organized into input-target pairs using a sliding window approach.
+
+## Technical Logic
+The workflow begins by converting text into token IDs using a tokenizer. These token IDs are then passed through an embedding layer, which maps each token to a dense vector representation in a continuous space. 
+
+To prepare data for training, the entire text corpus is segmented into overlapping sequences using a sliding window mechanism. Each sequence serves as an input, while the shifted version of the same sequence acts as the target. This setup enables the model to learn next-token prediction, which is the core objective of language modeling.
+
+A data loader is used to efficiently batch and shuffle these sequences, ensuring optimal training performance.
+
+## Why This Matters
+Token embeddings are the foundation of modern language models, enabling them to capture semantic relationships between words. Proper dataset construction ensures that the model learns contextual dependencies effectively, which is critical for generating coherent and meaningful text.
+
+## How to Run
+- Prepare a text dataset (e.g., a book or corpus)
+- Initialize the tokenizer
+- Create dataset using sliding window logic
+- Load data using batching mechanism
+- Pass token IDs through embedding layer
+
+## Expected Outcomes
+- Tokenized representation of raw text
+- Dense vector embeddings for each token
+- Structured input-target pairs for training
+- Efficient batch-wise data loading
+
+## Key Takeaways
+- Embeddings convert discrete tokens into continuous vector space
+- Sliding window enables context-aware training
+- Input-target shifting is essential for next-token prediction
+- DataLoader improves training efficiency and scalability
+
+## Next Steps
+- Implement positional embeddings
+- Build transformer attention mechanism
+- Integrate embedding layer into full model architecture
+- Start training a basic language model
+
 ## Position in LLM Journey
-This project sits at the early data preparation stage of LLM development, right after tokenization and before model architecture implementation. It bridges raw text processing and model training, forming a critical foundation for building GPT-like models.
+This stage represents the foundational step after understanding basic language modeling. It bridges the gap between raw text and model-ready data, preparing the pipeline for transformer-based architectures and full-scale LLM training.
